@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { site } from '@/content/site';
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -29,8 +29,22 @@ export function Header() {
     return () => media.removeEventListener('change', closeOnDesktop);
   }, []);
   function close() {
+    dialog.current?.close();
     setOpen(false);
     trigger.current?.focus();
+  }
+  function keepFocusInMenu(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key !== 'Tab') return;
+    const controls = event.currentTarget.querySelectorAll<HTMLElement>('a[href], button');
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
   }
   return (
     <>
@@ -74,6 +88,7 @@ export function Header() {
         className="mobile-menu"
         onCancel={close}
         onClose={() => setOpen(false)}
+        onKeyDown={keepFocusInMenu}
         aria-label="Main navigation"
       >
         <div className="mobile-menu-top">

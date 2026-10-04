@@ -5,7 +5,7 @@ import { CTAButton, DemoNotice } from '@/components/ui';
 import { GalleryGrid } from '@/components/gallery-grid';
 type PageKey = keyof typeof placeholderPages;
 function isPageKey(key: string): key is PageKey {
-  return key in placeholderPages;
+  return Object.prototype.hasOwnProperty.call(placeholderPages, key);
 }
 export function generateStaticParams() {
   return Object.keys(placeholderPages).map((page) => ({ page }));

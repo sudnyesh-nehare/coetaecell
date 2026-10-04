@@ -27,7 +27,7 @@ export const assets = {
   },
   founder: {
     src: '/images/events/founder.jpg',
-    alt: 'A speaker presenting on stage — illustrative stock photography',
+    alt: 'A microphone facing an event audience — illustrative stock photography',
   },
   collaboration: {
     src: '/images/gallery/collaboration.jpg',
