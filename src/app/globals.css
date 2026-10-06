@@ -2,16 +2,18 @@
 
 /* Brand and rhythm tokens: the starting point for future branding changes. */
 :root {
-  --background: #f8f7f4;
-  --foreground: #252724;
+  --background: #f3f1ea;
+  --foreground: #111318;
+  --yellow: #f5c84c;
+  --motif: #ffba91;
   --muted: #676963;
   --border: #d9dad2;
-  --card: #eeeee7;
-  --accent: #f15b35;
-  --accent-hover: #da4823;
+  --card: #e9e6dd;
+  --accent: #ff5a36;
+  --accent-hover: #e44826;
   --accent-ink: #b33c1c;
-  --on-accent: #20221f;
-  --inverse: #f8f7f4;
+  --on-accent: #111318;
+  --inverse: #f7f7f5;
   --dark-muted: #b7b9b1;
   --dark-border: #4a4e45;
   --section-space: clamp(64px, 8vw, 124px);

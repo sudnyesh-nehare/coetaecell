@@ -13,4 +13,4 @@ All photos are illustrative stock images from Unsplash, not COETA campus photogr
 
 License: https://unsplash.com/license. No downloaded image is from the reference website. Before public launch, replace with approved institutional photography or confirm the stock imagery’s suitability for the intended use. Preserve informative alt text and crop focal points when replacing assets.
 
-`team/`, `initiatives/`, and `placeholders/` are reserved for approved assets; no fictitious team portraits or partner logos are supplied.
+`team/demo-01.jpg` through `team/demo-06.jpg` are existing illustrative stock portraits (800 × 1000) paired with fictional profiles in `src/content/team.ts`, clearly labeled on the site. Their original download URLs were not recorded by the interrupted implementation. Replace them with approved portraits or establish their source and usage rights before publication. `initiatives/` and `placeholders/` remain reserved for approved assets; no partner logos are supplied.

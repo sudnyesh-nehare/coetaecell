@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import { TextReveal } from './motion/primitives';
 export function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -37,7 +38,9 @@ export function SectionHeading({
     <div className="section-heading">
       <div>
         <p className="eyebrow">{label}</p>
-        <h2>{title}</h2>
+        <h2>
+          <TextReveal text={title} />
+        </h2>
       </div>
       {href && (
         <Link className="text-link" href={href}>
@@ -53,15 +56,25 @@ export function ImagePanel({
   className = '',
   priority = false,
   sizes = '(max-width: 768px) 100vw, 50vw',
+  parallax = false,
+  reveal = true,
 }: {
   image: { src: string; alt: string };
   className?: string;
   priority?: boolean;
   sizes?: string;
+  parallax?: boolean;
+  reveal?: boolean;
 }) {
   return (
-    <div className={`image-panel ${className}`}>
-      <Image src={image.src} alt={image.alt} fill priority={priority} sizes={sizes} />
+    <div
+      className={`image-panel ${parallax ? 'parallax-panel' : ''} ${priority ? 'image-initial' : ''} ${className}`}
+      data-motion={reveal && !priority ? 'image' : undefined}
+      data-parallax={parallax ? 'true' : undefined}
+    >
+      <div className="media-layer">
+        <Image src={image.src} alt={image.alt} fill priority={priority} sizes={sizes} />
+      </div>
     </div>
   );
 }

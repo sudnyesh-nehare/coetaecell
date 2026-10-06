@@ -1,29 +1,26 @@
 import Link from 'next/link';
 import { site } from '@/content/site';
 import { CTAButton } from './ui';
+import { TextReveal } from './motion/primitives';
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer section-transition" data-motion="section">
+      <div className="section-plane" aria-hidden="true" />
       <div className="container">
         <div className="footer-top">
           <div>
             <p className="eyebrow">YOUR NEXT CHAPTER STARTS WITH A CONVERSATION</p>
             <h2>
-              Let’s make
-              <br />
-              something happen<span className="accent">.</span>
+              <TextReveal text={'Let’s make\nsomething happen.'} />
             </h2>
           </div>
           <CTAButton href="/contact">Get in touch</CTAButton>
         </div>
-        <div className="footer-middle">
+        <div className="footer-middle" data-motion="stagger">
           <Link href="/" className="footer-brand">
-            E-CELL<span>COETA</span>
+            E-CELL<span>COET AKOLA</span>
           </Link>
-          <p>
-            A space for curious minds.
-            <br />A community for what comes next.
-          </p>
+          <p>{site.institution}</p>
           <nav aria-label="Footer navigation">
             {site.navigation.map((item) => (
               <Link key={item.href} href={item.href}>
@@ -34,8 +31,8 @@ export function Footer() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} E-Cell COETA</span>
-          <span>Faculty review preview · All programmes are demo content</span>
+          <span>© {new Date().getFullYear()} E-CELL COET AKOLA</span>
+          <span>Ideas. Initiative. Impact.</span>
           <a href="#top">Back to top ↑</a>
         </div>
       </div>

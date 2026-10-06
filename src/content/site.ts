@@ -1,14 +1,21 @@
 export const site = {
-  name: 'E-Cell COETA',
+  name: 'E-CELL COET AKOLA',
+  institution: 'College of Engineering and Technology, Akola',
+  society: 'Shri Shivaji Education Society, Amravati’s',
+  hero: {
+    brand: 'E-CELL COET AKOLA',
+    headline: 'where ideas\nbecome impact',
+    primaryCTA: 'Explore Events',
+    secondaryCTA: 'About E-Cell',
+  },
   description:
-    'A space for curious minds, bold ideas, and the next generation of entrepreneurs at COETA.',
+    'A space for curious minds, bold ideas, and the next generation of entrepreneurs at the College of Engineering and Technology, Akola.',
   navigation: [
     { label: 'About', href: '/about' },
     { label: 'Initiatives', href: '/initiatives' },
     { label: 'Events', href: '/events' },
     { label: 'NEC', href: '/nec' },
     { label: 'Team', href: '/team' },
-    { label: 'Gallery', href: '/gallery' },
   ],
 };
 // All stock imagery is illustrative, not photography of COETA or its students.
@@ -61,59 +68,35 @@ export const initiatives = [
       'Meet fellow builders and learn from people who have taken the leap. Nobody builds alone.',
   },
 ];
-export const placeholderPages = {
+export const informationPages = {
   about: {
-    eyebrow: 'THE ENTREPRENEURSHIP CELL',
+    eyebrow: 'ABOUT E-CELL COET AKOLA',
     title: 'Curiosity is a\ngreat beginning.',
     description:
-      'E-Cell COETA is being built as a space for students to explore entrepreneurship, learn together, and turn meaningful problems into possibilities.',
+      'E-Cell COET Akola is the entrepreneurship community of College of Engineering and Technology, Akola, working to build a stronger culture of innovation, entrepreneurship and student-led initiatives.',
     heading: 'An idea can start anywhere.',
-    body: 'A conversation after class. A problem in your community. A question nobody has asked yet. Our proposed programme brings workshops, founder conversations, and collaborative challenges into campus life.',
-    note: 'The official mission, institutional details, and faculty coordinator information will be added after approval.',
+    body: 'We focus on entrepreneurial thinking, understanding market needs and developing business ideas. Workshops, business plan competitions, interaction with entrepreneurs, mentorship and industry exposure are ways to explore that journey.',
   },
   initiatives: {
-    eyebrow: 'LEARN. BUILD. REPEAT.',
-    title: 'A little curiosity.\nA lot of possibility.',
-    description:
-      'Explore the proposed programmes designed to take you from “what if” to “let’s try”.',
-    heading: 'Built around participation.',
-    body: 'Hands-on workshops, pitch challenges, and mentorship sessions create different entry points into entrepreneurship. You do not need a startup idea to get started.',
-    note: 'Programme names and the annual calendar are draft content awaiting approval.',
+    eyebrow: 'WHAT WE DO',
+    title: 'Learn. Build.\nThink ahead.',
+    description: 'Explore the skills, questions and connections behind entrepreneurial thinking.',
+    heading: 'Start with a real problem.',
+    body: 'Understand the people affected by a problem, test your assumptions, develop an idea and learn how to communicate its value. Our focus spans startup knowledge, business planning and learning from entrepreneurs.',
   },
   nec: {
     eyebrow: 'NATIONAL ENTREPRENEURSHIP CHALLENGE',
-    title: 'Think campus.\nBuild beyond it.',
-    description:
-      'A dedicated home for COETA’s proposed National Entrepreneurship Challenge activities, learning, and participation updates.',
-    heading: 'Progress, shared openly.',
-    body: 'This space will bring together the team’s activities, campus initiatives, and reflections when participation details are confirmed.',
-    note: 'Participation, rankings, awards, and affiliations are not yet verified. No official achievement is claimed.',
-  },
-  team: {
-    eyebrow: 'THE PEOPLE BEHIND THE IDEAS',
-    title: 'Different minds.\nShared ambition.',
-    description:
-      'Meet the people who will bring the E-Cell community to life — across programmes, design, outreach, and technology.',
-    heading: 'A team page, with real people.',
-    body: 'The approved student roster, faculty advisors, photographs, and role descriptions will be published here with consent.',
-    note: 'Team profiles are pending. Stock portraits are intentionally not presented as real members.',
-  },
-  gallery: {
-    eyebrow: 'LIFE AT E-CELL',
-    title: 'Small moments.\nBig energy.',
-    description:
-      'A place for the conversations, experiments, and shared experiences that make a community.',
-    heading: 'The beginnings of a visual archive.',
-    body: 'Official event albums will be added with dates, captions, and permissions. For now, this moodboard shows the intended photographic direction.',
-    note: 'Every photograph shown is illustrative stock photography, not a record of COETA events.',
+    title: 'Our NEC\nJourney.',
+    description: 'E-CELL COET AKOLA — Our participation in NEC 2024 and 2025.',
+    heading: 'E-Cell, IIT Bombay',
+    body: 'The National Entrepreneurship Challenge is organised by E-Cell, IIT Bombay. Our participation is an opportunity to develop entrepreneurial thinking on campus; it does not imply institutional affiliation or endorsement.',
   },
   contact: {
-    eyebrow: 'LET’S START A CONVERSATION',
-    title: 'Have an idea?\nThere’s room for it.',
+    eyebrow: 'CONTACT',
+    title: 'Let’s start a\nconversation.',
     description:
-      'Interested in joining, mentoring, or helping shape an event? This will be your starting point for connecting with E-Cell COETA.',
-    heading: 'Good things start with hello.',
-    body: 'Student enquiries, speaker invitations, and collaboration requests will be routed to the appropriate team once official contact details are confirmed.',
-    note: 'Official email, campus address, social links, and office hours are pending verification. Online enquiries are not available in this preview.',
+      'Connect with E-CELL COET AKOLA about events, student participation and entrepreneurship.',
+    heading: 'Find us at COET Akola.',
+    body: 'College of Engineering and Technology, Akola. Babhulgaon, Akola, Maharashtra – 444104. For institutional enquiries, visit the official college website. Dedicated E-Cell contact details will be published once confirmed.',
   },
 } as const;

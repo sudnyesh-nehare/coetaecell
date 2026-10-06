@@ -4,6 +4,10 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { site } from '@/content/site';
 import './globals.css';
+import './motion.css';
+import './public.css';
+import { MotionStyles } from '@/components/motion/primitives';
+import { MotionController } from '@/components/motion/motion-controller';
 const urbanist = localFont({
   src: [
     { path: '../../public/fonts/urbanist-400.woff2', weight: '400' },
@@ -16,16 +20,18 @@ const urbanist = localFont({
 });
 export const metadata: Metadata = {
   title: {
-    default: 'E-Cell COETA — Where ideas find their people.',
-    template: '%s | E-Cell COETA',
+    default: 'E-CELL COET AKOLA — Where ideas become impact.',
+    template: '%s | E-CELL COET AKOLA',
   },
   description: site.description,
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={urbanist.variable}>
       <body id="top">
+        <MotionStyles />
+        <MotionController />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

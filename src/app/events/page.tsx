@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
+import { TextReveal } from '@/components/motion/primitives';
 import { EventList } from '@/components/event-list';
-import { DemoNotice } from '@/components/ui';
 export const metadata: Metadata = { title: 'Events' };
 export default function EventsPage() {
   return (
@@ -8,9 +8,7 @@ export default function EventsPage() {
       <div className="page-intro">
         <p className="eyebrow">THE E-CELL CALENDAR</p>
         <h1>
-          Be there for
-          <br />
-          <span className="accent">what’s next.</span>
+          <TextReveal text={'Be there for\nwhat’s next.'} initial />
         </h1>
         <p>
           Fresh perspectives. Hands-on experiences. Your next big idea.
@@ -18,18 +16,7 @@ export default function EventsPage() {
           Find a reason to step out of the classroom.
         </p>
       </div>
-      <DemoNotice>
-        Demo calendar · All dates, venues, and fees are illustrative. Registration is not open.
-      </DemoNotice>
       <EventList />
-      <div className="listing-end">
-        <span className="eyebrow">MORE IN THE MAKING</span>
-        <p>
-          This is just the beginning.
-          <br />
-          The official event calendar is on its way.
-        </p>
-      </div>
     </div>
   );
 }

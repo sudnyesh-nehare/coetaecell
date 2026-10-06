@@ -7,6 +7,7 @@ export function GalleryGrid() {
         <ImagePanel
           key={image.src}
           image={image}
+          parallax={i === 0}
           className={`gallery-image gallery-image-${i}`}
           sizes="(max-width: 680px) 85vw, 33vw"
         />

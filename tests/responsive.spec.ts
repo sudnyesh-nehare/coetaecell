@@ -2,17 +2,15 @@ import { test, expect } from '@playwright/test';
 const routes = [
   '/',
   '/events',
-  '/events/the-first-pitch',
-  '/events/zero-to-one',
-  '/events/beyond-the-blueprint',
+  '/events/cybersecurity-masterclass',
+  '/events/idea-pitching-competition',
   '/about',
   '/initiatives',
   '/nec',
   '/team',
-  '/gallery',
   '/contact',
 ];
-for (const width of [360, 390, 430, 768, 1024, 1440]) {
+for (const width of [320, 360, 390, 430, 768, 1024, 1280, 1440, 1920]) {
   test(`All routes fit the viewport at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     const errors: string[] = [];
@@ -41,12 +39,12 @@ for (const width of [360, 390, 430, 768, 1024, 1440]) {
 }
 test('Event filtering preserves accessible results and links', async ({ page }) => {
   await page.goto('/events');
-  await page.getByRole('button', { name: 'Workshop', exact: true }).click();
-  await expect(page.getByRole('status')).toContainText('1 demo event');
+  await page.getByRole('button', { name: 'Workshop / Masterclass', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('1 event');
   await expect(page.locator('.event-card')).toHaveCount(1);
-  await page.getByRole('heading', { name: 'Zero to One' }).getByRole('link').click();
-  await expect(page).toHaveURL(/events\/zero-to-one/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Zero to One');
+  await page.getByRole('heading', { name: 'Cybersecurity Masterclass' }).getByRole('link').click();
+  await expect(page).toHaveURL(/events\/cybersecurity-masterclass/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Cybersecurity Masterclass');
 });
 test('Mobile navigation traps focus, closes with Escape, and follows links', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -74,14 +72,12 @@ test('Direct mobile event visits expose registration status and functional FAQ',
 }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/events/the-first-pitch');
-  await page.locator('.mobile-registration').getByRole('link').click();
-  await expect(page.locator('#registration')).toBeInViewport();
-  await expect(page.locator('#registration')).toContainText('Registration not open');
+  await page.goto('/events/cybersecurity-masterclass');
   await page.locator('summary').filter({ hasText: 'Can I register now?' }).click();
-  await expect(
-    page.getByText('Not yet. This is a frontend preview', { exact: false }),
-  ).toBeVisible();
+  await expect(page.getByText('Registration is open on this site', { exact: false })).toBeVisible();
+  await page.locator('.mobile-registration').getByRole('link').click();
+  await expect(page).toHaveURL('/events/cybersecurity-masterclass/register');
+  await expect(page.getByRole('button', { name: 'Review Registration' })).toBeVisible();
 });
 test('Unknown event and route render a useful 404', async ({ page }) => {
   for (const path of ['/events/missing-event', '/missing-page', '/toString']) {
@@ -89,4 +85,28 @@ test('Unknown event and route render a useful 404', async ({ page }) => {
     expect(response?.status()).toBe(404);
     await expect(page.getByRole('link', { name: 'Back to home' })).toBeVisible();
   }
+});
+
+test('Public pages contain only approved records and working internal links', async ({ page }) => {
+  const links = new Set<string>();
+  for (const route of ['/', '/events', '/team', '/about', '/initiatives', '/nec', '/contact']) {
+    await page.goto(route);
+    await expect(page.locator('body')).not.toContainText(
+      /INNOVENTURE|The First Pitch|Ananya Deshmukh|demo calendar|fictional|faculty review|Lorem ipsum/i,
+    );
+    for (const href of await page
+      .locator('a[href^="/"]')
+      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')!)))
+      links.add(href);
+  }
+  for (const href of links) expect((await page.request.get(href)).status(), href).toBe(200);
+  await page.goto('/events');
+  await expect(page.locator('.event-card')).toHaveCount(2);
+  await expect(page.locator('.event-card').last()).toContainText('Cybersecurity Masterclass');
+  await page.goto('/');
+  await expect(page.locator('.desktop-nav').getByRole('link', { name: 'NEC' })).toHaveAttribute(
+    'href',
+    '/nec',
+  );
+  await expect(page.locator('.brand-symbol, .gallery-grid, .impact-grid')).toHaveCount(0);
 });
